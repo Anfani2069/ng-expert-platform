@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ng-Expert | Recrutement d'Experts Angular</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6900',
+                        secondary: '#080F2C',
+                        'bg-soft': '#FFFBF7',
+                    },
+                    fontFamily: {
+                        heading: ['Roboto', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'float': '0 20px 50px -12px rgba(0, 0, 0, 0.1)',
+                        'glow': '0 0 60px -15px rgba(255, 105, 0, 0.3)',
+                        'angular': '0 8px 24px rgba(221, 0, 49, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; scroll-behavior: smooth; }
+        .font-heading { font-family: 'Roboto', sans-serif; font-weight: 700; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        
+        .gradient-purple {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-bg-soft text-secondary overflow-x-hidden">
+
+    <nav class="container mx-auto px-6 py-5 flex justify-between items-center relative z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">N</div>
+            <span class="text-xl font-heading font-bold">Ng-Expert</span>
+        </div>
+
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+            <a href="#" class="text-secondary font-bold">Home</a>
+            <a href="#experts" class="hover:text-primary transition">Find Experts</a>
+            <a href="#contact" class="hover:text-primary transition">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button class="flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-sm font-bold hover:border-primary hover:text-primary transition bg-white">
+                Get Started 
+                <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="container mx-auto px-6 pt-12 pb-20 relative overflow-hidden">
+        <div class="absolute top-20 left-10 text-primary text-4xl opacity-60 animate-float">
+            <i class="fa-brands fa-angular"></i>
+        </div>
+        <div class="absolute top-40 right-10 text-primary text-3xl opacity-40 animate-float" style="animation-delay: 0.5s;">
+            <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="absolute top-60 left-1/4 text-primary text-2xl opacity-30 animate-float" style="animation-delay: 1s;">◆</div>
+        <div class="absolute bottom-40 right-1/4 text-primary text-3xl opacity-50 animate-float" style="animation-delay: 1.5s;">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight">
+                    Modernizing the <span class="relative inline-block text-primary">_Angular</span><br>
+                    Hiring Experience
+                </h1>
+
+                <div class="bg-white rounded-full shadow-float p-2 pl-6 flex items-center justify-between border border-gray-100">
+                    <input type="text" placeholder="etc: RxJS, Architect, Lead..." class="flex-grow outline-none text-gray-600 text-sm font-medium bg-transparent">
+                    
+                    <div class="hidden md:flex items-center gap-2 border-l border-gray-200 pl-4 pr-2">
+                        <span class="text-sm font-bold text-secondary cursor-pointer whitespace-nowrap">Senior Level</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                    </div>
+
+                    <button class="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-glow hover:scale-105 transition transform ml-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-3 text-xs font-medium text-gray-500 flex-wrap">
+                    <span>Popular Tech:</span>
+                    <span class="px-3 py-1 rounded-full border border-gray-200 hover:border-primary cursor-pointer transition bg-white">RxJS</span>
+                    <span class="bg-secondary text-white px-3 py-1 rounded-full cursor-pointer shadow-lg">Angular 17</span>
+                    <span class="px-3 py-1 rounded-full border border-gray-200 hover:border-primary cursor-pointer transition bg-white">Nx Monorepo</span>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center items-center">
+                <img src="image-transparent.png" alt="Developer" class="w-full max-w-md animate-float relative z-10">
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-secondary text-white py-10">
+        <div class="container mx-auto px-6 pt-10">
+            <div class="flex flex-col md:flex-row items-center justify-between border-t border-gray-800 pt-8 gap-8">
+                <div class="text-left">
+                    <p class="text-sm font-bold text-gray-400">Trusted By 1M+</p>
+                    <p class="text-sm font-bold text-white">Tech Companies</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                    <div class="flex items-center gap-2 text-xl font-bold font-heading"><i class="fa-brands fa-google"></i> Google</div>
+                    <div class="flex items-center gap-2 text-xl font-bold font-heading"><i class="fa-brands fa-microsoft"></i> Microsoft</div>
+                    <div class="flex items-center gap-2 text-xl font-bold font-heading"><i class="fa-brands fa-airbnb"></i> Airbnb</div>
+                    <div class="flex items-center gap-2 text-xl font-bold font-heading"><i class="fa-brands fa-spotify"></i> Spotify</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-heading font-bold mb-4">Popular Categories</h2>
+            <p class="text-gray-500">Depending on the delivery option you selected at checkout, we'll email you a tracking<br>link after your order has been shipped.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center">
+                        <i class="fa-solid fa-code text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">Based on Opensource &</h3>
+                        <p class="text-sm text-gray-500">UK Career Company</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-code-branch text-primary"></i>
+                    </div>
+                    <h3 class="font-bold">Development Services</h3>
+                </div>
+                <div class="flex gap-2 flex-wrap">
+                    <span class="px-3 py-1 bg-gray-100 rounded-full text-xs">Laravel PHP</span>
+                    <span class="px-3 py-1 bg-gray-100 rounded-full text-xs">WordPress</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-3 flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-primary"></i> 120 Job Available
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition">
+                <h3 class="font-bold mb-2">Software Engineer</h3>
+                <p class="text-xs text-gray-400 flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-primary"></i> 120 Job Available
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-mobile-alt text-primary"></i>
+                    </div>
+                    <h3 class="font-bold">App Development</h3>
+                </div>
+                <p class="text-xs text-gray-400 mt-3 flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-primary"></i> 85 Positions
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition">
+                <h3 class="font-bold mb-2">Graphics Design</h3>
+                <p class="text-xs text-gray-400 flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-primary"></i> 120 Job Available
+                </p>
+            </div>
+
+            <div class="bg-secondary text-white rounded-2xl p-6 shadow-float hover:shadow-glow transition flex items-center justify-center">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <i class="fa-solid fa-plus text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold">More Categories</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div class="relative">
+                <div class="bg-white rounded-3xl shadow-float p-6">
+                    <img src="image 1.png" alt="Dashboard" class="w-full rounded-xl">
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-4xl font-heading font-bold mb-4">
+                    One Clear Overview for<br>
+                    Smooth <span class="text-primary">Collaborative</span><br>
+                    Hiring Platform
+                </h2>
+                <p class="text-gray-500 mb-6">
+                    No more wasting time updating spreadsheets and deciphering CVs. Keep track of all your jobs & candidates from one clear dashboard.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-shield-alt text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Save & Security</h3>
+                        <p class="text-sm text-gray-500">Online services streamline tasks, while robust security measures protect.</p>
+                    </div>
+
+                    <div>
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-check-circle text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Get Quality Work Done</h3>
+                        <p class="text-sm text-gray-500">Hand your project over to a talented freelancer in minutes, get long-lasting results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div>
+                <h2 class="text-4xl font-heading font-bold mb-4">
+                    Application forms for<br>
+                    a Great Candidate<br>
+                    Experience
+                </h2>
+                <p class="text-gray-500 mb-6">
+                    Use customisable assessments and tests, knockout screening questions, and many extra features to help you filter out the best matching talent.
+                </p>
+
+                <button class="bg-secondary text-white px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition mb-6">
+                    Start for free
+                </button>
+
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-check-circle text-primary"></i>
+                        <span class="text-sm font-medium">Easy communication with candidates</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-users text-primary"></i>
+                        <span class="text-sm font-medium">Talent pool included</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-sliders-h text-primary"></i>
+                        <span class="text-sm font-medium">Customisable pipelines</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="relative">
+                    <img src="istockphoto-1587404941-1024x1024.jpg" alt="Candidate" class="w-full max-w-md mx-auto">
+                    <div class="absolute top-10 right-10 bg-primary text-white rounded-2xl p-4 shadow-float">
+                        <p class="text-sm font-bold">Today</p>
+                        <p class="text-3xl font-bold">235</p>
+                        <div class="flex -space-x-2 mt-2">
+                            <img class="w-6 h-6 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/11.jpg">
+                            <img class="w-6 h-6 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/12.jpg">
+                            <img class="w-6 h-6 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/13.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-secondary text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-heading font-bold mb-4">
+                    Start Scaling your Hiring<br>
+                    Efforts with ease.
+                </h2>
+                <p class="text-gray-400">
+                    Depending on the delivery option you selected at checkout, we'll email you a tracking<br>
+                    link after your order has been shipped.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 hover:bg-white/10 transition">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-calendar-check text-primary text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">End Scheduling<br>Conflict</h3>
+                    <p class="text-gray-400 text-sm">
+                        Automate the manual tasks of interview scheduling and coordination, saving you time (and headaches).
+                    </p>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 hover:bg-white/10 transition">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-handshake text-primary text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Make an offer they can't<br>refuse</h3>
+                    <p class="text-gray-400 text-sm">
+                        Decrease your time-to-offer and increase acceptance rates. Get first dibs on the best talent around to scale your hiring.
+                    </p>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 hover:bg-white/10 transition border border-primary/30">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chart-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Maintain your hiring bar<br>at scale</h3>
+                    <p class="text-gray-400 text-sm">
+                        Balance schedules, manage interviewer load, prevent burnout, and build a healthy & recruiting culture in the process.
+                    </p>
+                    <button class="text-primary font-bold text-sm mt-4 flex items-center gap-2">
+                        Explore More <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <h3 class="text-3xl font-heading font-bold mb-8">
+                    The better Solution to Attract, Screen, &<br>
+                    Manage talent in one tool
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div>
+                        <p class="text-5xl font-bold mb-2">3x</p>
+                        <p class="text-gray-400">Faster Hiring Platform</p>
+                    </div>
+                    <div>
+                        <p class="text-5xl font-bold mb-2">242M</p>
+                        <p class="text-gray-400">Companies Application</p>
+                    </div>
+                    <div>
+                        <p class="text-5xl font-bold mb-2">97.2%</p>
+                        <p class="text-gray-400">Process Hiring tool</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experts" class="container mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-heading font-bold mb-4">Hire by Profession</h2>
+            <p class="text-gray-500">
+                Depending on the delivery option you selected at checkout, we'll email you a tracking<br>
+                link after your order has been shipped.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition text-center">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
+                <div class="flex items-center justify-center gap-1 mb-2">
+                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                    <span class="text-sm font-bold">4.8 (45)</span>
+                </div>
+                <h3 class="font-bold mb-1">Shoaib Islam</h3>
+                <p class="text-xs text-gray-500 mb-3 flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-map-marker-alt"></i> Las Vegas, USA
+                </p>
+                <div class="flex gap-2 justify-center mb-3 flex-wrap">
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">Full-Time</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">UI/UX</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">UX/UI</span>
+                </div>
+                <p class="font-bold text-lg">$20 <span class="text-sm text-gray-500">/Hours</span></p>
+            </div>
+
+            <div class="bg-secondary text-white rounded-2xl p-6 shadow-float hover:shadow-glow transition text-center">
+                <img src="https://randomuser.me/api/portraits/men/33.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
+                <div class="flex items-center justify-center gap-1 mb-2">
+                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                    <span class="text-sm font-bold">4.9 (52)</span>
+                </div>
+                <h3 class="font-bold mb-1">Aminul Islam</h3>
+                <p class="text-xs text-gray-300 mb-3 flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-map-marker-alt"></i> Las Vegas, USA
+                </p>
+                <div class="flex gap-2 justify-center mb-3 flex-wrap">
+                    <span class="px-2 py-1 bg-white/10 rounded text-xs">Full-Time</span>
+                    <span class="px-2 py-1 bg-white/10 rounded text-xs">UI/UX</span>
+                    <span class="px-2 py-1 bg-white/10 rounded text-xs">UX/UI</span>
+                </div>
+                <p class="font-bold text-lg">$20 <span class="text-sm text-gray-300">/Hours</span></p>
+                <button class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mx-auto mt-4">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition text-center">
+                <img src="https://randomuser.me/api/portraits/men/34.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
+                <div class="flex items-center justify-center gap-1 mb-2">
+                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                    <span class="text-sm font-bold">4.7 (38)</span>
+                </div>
+                <h3 class="font-bold mb-1">Nahid Uzzaman</h3>
+                <p class="text-xs text-gray-500 mb-3 flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-map-marker-alt"></i> Las Vegas, USA
+                </p>
+                <div class="flex gap-2 justify-center mb-3 flex-wrap">
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">Full-Time</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">UI/UX</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">UX/UI</span>
+                </div>
+                <p class="font-bold text-lg">$20 <span class="text-sm text-gray-500">/Hours</span></p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float hover:shadow-glow transition text-center">
+                <img src="https://randomuser.me/api/portraits/men/35.jpg" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
+                <div class="flex items-center justify-center gap-1 mb-2">
+                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                    <span class="text-sm font-bold">4.9 (61)</span>
+                </div>
+                <h3 class="font-bold mb-1">Safwan Islam</h3>
+                <p class="text-xs text-gray-500 mb-3 flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-map-marker-alt"></i> Las Vegas, USA
+                </p>
+                <div class="flex gap-2 justify-center mb-3 flex-wrap">
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">Full-Time</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">UI/UX</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs">UX/UI</span>
+                </div>
+                <p class="font-bold text-lg">$20 <span class="text-sm text-gray-500">/Hours</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-heading font-bold mb-4">Love by thousands of<br>Talent</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+            <div class="bg-white rounded-2xl p-6 shadow-float">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://randomuser.me/api/portraits/men/41.jpg" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h4 class="font-bold">Aminul Islam</h4>
+                        <p class="text-xs text-gray-500">Co-Founder, GC Innovation Hub</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    "Our AI image solutions have exceeded our Customers invite them to projects, sign contracts and kick off the expectations, they appreciate the Here's a opportunities.
+                </p>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold">South Korea</p>
+                        <p class="text-xs text-gray-400">12 Dec 24</p>
+                    </div>
+                    <div class="flex gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://randomuser.me/api/portraits/men/42.jpg" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h4 class="font-bold">Aminul Islam</h4>
+                        <p class="text-xs text-gray-500">Co-Founder, GC Innovation Hub</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    "Our AI image solutions have exceeded our Customers invite them to projects, sign contracts and kick off the expectations, they appreciate the Here's a opportunities.
+                </p>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold">South Korea</p>
+                        <p class="text-xs text-gray-400">12 Dec 24</p>
+                    </div>
+                    <div class="flex gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-float">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://randomuser.me/api/portraits/men/43.jpg" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h4 class="font-bold">Aminul Islam</h4>
+                        <p class="text-xs text-gray-500">Co-Founder, GC Innovation Hub</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    "Our AI image solutions have exceeded our Customers invite them to projects, sign contracts and kick off the expectations, they appreciate the Here's a opportunities.
+                </p>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold">South Korea</p>
+                        <p class="text-xs text-gray-400">12 Dec 24</p>
+                    </div>
+                    <div class="flex gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <div class="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-float">
+                <span class="text-3xl font-bold">4.8<span class="text-primary">/5</span></span>
+                <div class="text-left">
+                    <p class="text-xs font-bold">48000+ Happy Customer Based on Complement</p>
+                    <p class="text-xs text-gray-500">& Customer reviews on Trustpilot</p>
+                </div>
+            </div>
+            <button class="ml-4 bg-secondary text-white px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition">
+                Read More User Stories
+            </button>
+        </div>
+    </section>
+
+    <section class="bg-secondary text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-heading font-bold mb-4">
+                    Integrations with Our<br>
+                    Favorite Apps
+                </h2>
+                <p class="text-gray-400 mb-6">
+                    Depending on the delivery option you selected at checkout, we'll email you a tracking<br>
+                    link after your order has been shipped.
+                </p>
+                <button class="border border-white/30 text-white px-6 py-2 rounded-full font-bold hover:bg-white/10 transition">
+                    See all Integration
+                </button>
+            </div>
+
+            <div class="flex justify-center items-center gap-8 flex-wrap max-w-4xl mx-auto">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fa-brands fa-google text-2xl text-gray-800"></i>
+                </div>
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fa-brands fa-slack text-2xl text-purple-600"></i>
+                </div>
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-info-circle text-2xl text-blue-600"></i>
+                </div>
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fa-brands fa-linkedin text-2xl text-blue-700"></i>
+                </div>
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-chart-bar text-2xl text-orange-500"></i>
+                </div>
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fa-brands fa-google-drive text-2xl text-green-600"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-heading font-bold mb-4">Insights & Updates</h2>
+            <p class="text-gray-500">
+                Onboard your own talent pool to Quiety, invite them to projects,<br>
+                kick off the projects simpler than ever.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+            <div class="bg-secondary text-white rounded-2xl p-8">
+                <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-trophy text-primary text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Create a Winning Recruiting Culture at Enterprise Scale.</h3>
+                <p class="text-gray-400 text-sm mb-6">
+                    Scale faster by automating interviewing and streamlining recruiting operations — saving time for everyone involved in your hiring process and protecting resources.
+                </p>
+                <button class="text-primary font-bold text-sm flex items-center gap-2">
+                    Explore More <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-float">
+                <img src="image 2.png" alt="Blog" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p class="text-xs text-gray-400 mb-2">June 29, 2024 · 6 min read</p>
+                    <h3 class="font-bold mb-2">How Digital Storage Can Tour Transform Business</h3>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-float">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400" alt="Blog" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p class="text-xs text-gray-400 mb-2">June 29, 2024 · 6 min read</p>
+                    <h3 class="font-bold mb-2">How Digital Storage Can Tour Transform Business</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center gradient-purple rounded-3xl py-16 px-6">
+            <h2 class="text-4xl font-heading font-bold mb-4">
+                Job-Search Smarter? We<br>
+                Make it easy.
+            </h2>
+            <button class="bg-secondary text-white px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition">
+                Get Started For Free
+            </button>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-secondary text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-heading font-bold mb-4">
+                        Reach your Recruitment Goals<br>
+                        Right on Schedule.
+                    </h3>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Onboard your own talent pool to Quiety, invite them to projects, kick off the projects.
+                    </p>
+                    <button class="flex items-center gap-2 border border-white/30 rounded-full px-5 py-2 text-sm font-bold hover:bg-white/10 transition">
+                        Get Started 
+                        <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Features</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Interview Scheduling</a></li>
+                        <li><a href="#" class="hover:text-white transition">Candidate Experience</a></li>
+                        <li><a href="#" class="hover:text-white transition">Interviewer Training</a></li>
+                        <li><a href="#" class="hover:text-white transition">Scheduling Queues</a></li>
+                        <li><a href="#" class="hover:text-white transition">Reporting & Dashboards</a></li>
+                        <li><a href="#" class="hover:text-white transition">Integrations</a></li>
+                        <li><a href="#" class="hover:text-white transition">Security</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">About us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contacts</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Customer Stories</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Marketplace & Network</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Upgrade your career</a></li>
+                        <li><a href="#" class="hover:text-white transition">Grow your network</a></li>
+                        <li><a href="#" class="hover:text-white transition">Build a team</a></li>
+                        <li><a href="#" class="hover:text-white transition">Quiety Community</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">N</div>
+                        <span class="text-xl font-heading font-bold">Ng-Expert</span>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-opacity-80 transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fa-brands fa-pinterest"></i>
+                        </a>
+                    </div>
+
+                    <p class="text-sm text-gray-400">Copyright @2023 All Rights Reserved by ThemeTags</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

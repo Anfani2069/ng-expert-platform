@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Recruteur | Ng-Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0EA5E9',
+                        'primary-dark': '#0284C7',
+                        secondary: '#1E293B',
+                        'secondary-light': '#334155',
+                        accent: '#06B6D4',
+                        'bg-soft': '#F1F5F9',
+                    },
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'DM Sans', sans-serif; 
+            background-color: #F8FAFC;
+        }
+        .font-heading { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    </style>
+</head>
+<body class="text-secondary">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+            <!-- Logo -->
+            <div class="p-6">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">N</div>
+                    <span class="text-xl font-heading font-bold">Ng-Expert</span>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 p-4 space-y-1">
+                <div class="text-xs font-semibold text-gray-400 uppercase mb-3 px-3">Menu</div>
+                
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium">
+                    <i class="fa-solid fa-home w-5"></i>
+                    <span>Dashboard</span>
+                </a>
+                
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-briefcase w-5"></i>
+                    <span>Mes Offres</span>
+                </a>
+                
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-users w-5"></i>
+                    <span>Candidats</span>
+                    <span class="ml-auto bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">12</span>
+                </a>
+                
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-message w-5"></i>
+                    <span>Messages</span>
+                    <span class="ml-auto bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">5</span>
+                </a>
+                
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-search w-5"></i>
+                    <span>Rechercher Experts</span>
+                </a>
+
+                <div class="text-xs font-semibold text-gray-400 uppercase mb-3 px-3 mt-6">Paramètres</div>
+                
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-bell w-5"></i>
+                    <span>Notifications</span>
+                </a>
+                
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-gear w-5"></i>
+                    <span>Paramètres</span>
+                </a>
+            </nav>
+
+            <!-- User Profile -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full">
+                    <div class="flex-1">
+                        <p class="font-semibold text-sm">Sophie Martin</p>
+                        <p class="text-xs text-gray-500">Recruteur</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 p-4 sticky top-0 z-40">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <button class="lg:hidden text-gray-600">
+                            <i class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                        <div class="relative">
+                            <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input 
+                                type="text" 
+                                placeholder="Rechercher des experts Angular..." 
+                                class="pl-11 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 w-96 text-sm"
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <button class="w-10 h-10 rounded-lg hover:bg-gray-50 flex items-center justify-center transition">
+                            <i class="fa-solid fa-moon text-gray-600"></i>
+                        </button>
+                        
+                        <button class="w-10 h-10 rounded-lg hover:bg-gray-50 flex items-center justify-center transition relative">
+                            <i class="fa-solid fa-globe text-gray-600"></i>
+                        </button>
+                        
+                        <button class="w-10 h-10 rounded-lg hover:bg-gray-50 flex items-center justify-center transition relative">
+                            <i class="fa-solid fa-plus-circle text-gray-600"></i>
+                        </button>
+                        
+                        <button class="w-10 h-10 rounded-lg hover:bg-gray-50 flex items-center justify-center transition relative">
+                            <i class="fa-solid fa-bell text-gray-600"></i>
+                            <span class="absolute top-1.5 right-1.5 w-5 h-5 bg-primary text-white text-xs rounded-full flex items-center justify-center font-semibold">5</span>
+                        </button>
+                        
+                        <div class="h-8 w-px bg-gray-200 mx-2"></div>
+                        
+                        <div id="profileToggle" class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 rounded-lg px-3 py-2 transition">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-9 h-9 rounded-full border-2 border-gray-100">
+                            <div class="text-left">
+                                <p class="font-semibold text-sm text-gray-900">Sophie Martin</p>
+                                <p class="text-xs text-gray-500">Recruteur</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="px-8 py-6">
+                <!-- Welcome Card -->
+                <div class="bg-gradient-to-r from-primary to-cyan-400 rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h1 class="text-3xl font-heading font-bold mb-2">Bienvenue Sophie ! 👋</h1>
+                        <p class="text-white/90 mb-6">Trouvez les meilleurs experts Angular pour vos projets</p>
+                        
+                        <div class="grid grid-cols-3 gap-6 max-w-2xl">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                    <span class="text-sm">Offres actives</span>
+                                </div>
+                                <p class="text-2xl font-bold">8</p>
+                                <p class="text-xs text-white/70">En ligne</p>
+                            </div>
+                            
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fa-solid fa-user-check"></i>
+                                    <span class="text-sm">Candidatures</span>
+                                </div>
+                                <p class="text-2xl font-bold">47</p>
+                                <p class="text-xs text-white/70">Cette semaine</p>
+                            </div>
+                            
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fa-solid fa-handshake"></i>
+                                    <span class="text-sm">Embauches</span>
+                                </div>
+                                <p class="text-2xl font-bold">12</p>
+                                <p class="text-xs text-white/70">Ce mois</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative illustration -->
+                    <div class="absolute right-8 bottom-0 opacity-20">
+                        <i class="fa-solid fa-users text-9xl"></i>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
+                                <i class="fa-solid fa-eye text-primary text-xl"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">+18.3%</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Vues des offres</p>
+                        <p class="text-2xl font-bold">2,845</p>
+                        <p class="text-xs text-gray-500 mt-1">7 derniers jours</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center">
+                                <i class="fa-solid fa-file-alt text-green-600 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">+12.5%</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Candidatures reçues</p>
+                        <p class="text-2xl font-bold">156</p>
+                        <p class="text-xs text-gray-500 mt-1">Ce mois</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-purple-50 flex items-center justify-center">
+                                <i class="fa-solid fa-user-tie text-purple-600 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">+8%</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Experts contactés</p>
+                        <p class="text-2xl font-bold">89</p>
+                        <p class="text-xs text-gray-500 mt-1">Total</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-orange-50 flex items-center justify-center">
+                                <i class="fa-solid fa-clock text-orange-600 text-xl"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-gray-600 bg-gray-50 px-2 py-1 rounded-full">--</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Temps moyen de recrutement</p>
+                        <p class="text-2xl font-bold">14j</p>
+                        <p class="text-xs text-gray-500 mt-1">Moyenne</p>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Candidatures Chart -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="font-bold text-lg">Candidatures mensuelles</h3>
+                                <p class="text-sm text-gray-500">Évolution sur les 6 derniers mois</p>
+                            </div>
+                            <select class="px-3 py-2 border border-gray-200 rounded-lg text-sm">
+                                <option>6 mois</option>
+                                <option>3 mois</option>
+                                <option>1 an</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Simple chart representation -->
+                        <div class="h-64 flex items-end justify-between gap-2">
+                            <div class="flex-1 bg-primary/20 rounded-t-lg" style="height: 50%"></div>
+                            <div class="flex-1 bg-primary/30 rounded-t-lg" style="height: 65%"></div>
+                            <div class="flex-1 bg-primary/40 rounded-t-lg" style="height: 60%"></div>
+                            <div class="flex-1 bg-primary/50 rounded-t-lg" style="height: 80%"></div>
+                            <div class="flex-1 bg-primary/70 rounded-t-lg" style="height: 90%"></div>
+                            <div class="flex-1 bg-primary rounded-t-lg" style="height: 100%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between mt-4 text-xs text-gray-500">
+                            <span>Jan</span>
+                            <span>Fév</span>
+                            <span>Mar</span>
+                            <span>Avr</span>
+                            <span>Mai</span>
+                            <span>Juin</span>
+                        </div>
+                    </div>
+
+                    <!-- Top Skills Recherchées -->
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                        <h3 class="font-bold text-lg mb-6">Compétences recherchées</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium">Angular</span>
+                                    <span class="text-sm text-gray-500">95%</span>
+                                </div>
+                                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium">TypeScript</span>
+                                    <span class="text-sm text-gray-500">90%</span>
+                                </div>
+                                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium">RxJS</span>
+                                    <span class="text-sm text-gray-500">78%</span>
+                                </div>
+                                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-400 rounded-full" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium">NgRx</span>
+                                    <span class="text-sm text-gray-500">65%</span>
+                                </div>
+                                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-400 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Offres -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Offres actives -->
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-bold text-lg">Offres actives</h3>
+                            <a href="#" class="text-sm text-primary hover:text-primary-dark font-semibold">Voir tout</a>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 cursor-pointer border border-gray-100">
+                                <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-code text-primary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold mb-1">Lead Developer Angular</h4>
+                                    <p class="text-sm text-gray-500 mb-2">CDI - Paris • 60-75k€</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded-full">23 candidatures</span>
+                                        <span class="text-xs text-gray-400">•</span>
+                                        <span class="text-xs text-gray-500">Publiée il y a 3 jours</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 cursor-pointer border border-gray-100">
+                                <div class="w-12 h-12 rounded-lg bg-purple-50 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-laptop-code text-purple-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold mb-1">Développeur Angular Senior</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Freelance - Remote • 500-600€/j</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">15 candidatures</span>
+                                        <span class="text-xs text-gray-400">•</span>
+                                        <span class="text-xs text-gray-500">Publiée il y a 5 jours</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 cursor-pointer border border-gray-100">
+                                <div class="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-mobile text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold mb-1">Expert Angular + Ionic</h4>
+                                    <p class="text-sm text-gray-500 mb-2">Mission 6 mois - Lyon • 550€/j</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-yellow-50 text-yellow-600 px-2 py-1 rounded-full">8 candidatures</span>
+                                        <span class="text-xs text-gray-400">•</span>
+                                        <span class="text-xs text-gray-500">Publiée il y a 1 semaine</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Candidats récents -->
+                    <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-bold text-lg">Candidatures récentes</h3>
+                            <a href="#" class="text-sm text-primary hover:text-primary-dark font-semibold">Voir tout</a>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border border-gray-100">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="w-12 h-12 rounded-full">
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-semibold text-sm">Thomas Dubois</h4>
+                                        <span class="text-xs text-gray-400">Il y a 2h</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-2">Lead Developer Angular</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">Angular 17</span>
+                                        <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full">8 ans exp.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border border-gray-100">
+                                <img src="https://randomuser.me/api/portraits/women/47.jpg" class="w-12 h-12 rounded-full">
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-semibold text-sm">Marie Laurent</h4>
+                                        <span class="text-xs text-gray-400">Il y a 5h</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-2">Développeur Angular Senior</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">RxJS</span>
+                                        <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full">6 ans exp.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border border-gray-100">
+                                <img src="https://randomuser.me/api/portraits/men/48.jpg" class="w-12 h-12 rounded-full">
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-semibold text-sm">Pierre Martin</h4>
+                                        <span class="text-xs text-gray-400">Hier</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-2">Expert Angular + Ionic</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">Ionic</span>
+                                        <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full">5 ans exp.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border border-gray-100">
+                                <img src="https://randomuser.me/api/portraits/women/49.jpg" class="w-12 h-12 rounded-full">
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="font-semibold text-sm">Julie Bernard</h4>
+                                        <span class="text-xs text-gray-400">Il y a 2 jours</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-2">Lead Developer Angular</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">NgRx</span>
+                                        <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full">7 ans exp.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- User Profile Panel -->
+        <div id="userProfilePanel" class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-heading font-bold">User Profile</h2>
+                    <button id="closeProfile" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center transition">
+                        <i class="fa-solid fa-times text-gray-600"></i>
+                    </button>
+                </div>
+
+                <!-- User Info -->
+                <div class="text-center mb-6 pb-6 border-b border-gray-200">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-20 h-20 rounded-full mx-auto mb-3 border-4 border-primary/20">
+                    <h3 class="font-bold text-lg mb-1">Sophie Martin</h3>
+                    <p class="text-sm text-gray-500 mb-2">Recruteur</p>
+                    <p class="text-xs text-gray-400">
+                        <i class="fa-solid fa-envelope mr-1"></i>
+                        sophie.martin@company.com
+                    </p>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="space-y-2">
+                    <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition group">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-primary/10 transition">
+                            <i class="fa-solid fa-user text-primary"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-semibold text-sm">Mon Profil</p>
+                            <p class="text-xs text-gray-500">Paramètres du compte</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition group">
+                        <div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition">
+                            <i class="fa-solid fa-building text-green-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-semibold text-sm">Mon Entreprise</p>
+                            <p class="text-xs text-gray-500">Informations société</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition group">
+                        <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center group-hover:bg-orange-100 transition">
+                            <i class="fa-solid fa-chart-line text-orange-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-semibold text-sm">Statistiques</p>
+                            <p class="text-xs text-gray-500">Rapports détaillés</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Logout Button -->
+                <button class="w-full mt-6 bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition">
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="profileOverlay" class="fixed inset-0 bg-black/20 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
+    </div>
+
+    <script>
+        const profileToggle = document.getElementById('profileToggle');
+        const userProfilePanel = document.getElementById('userProfilePanel');
+        const closeProfile = document.getElementById('closeProfile');
+        const profileOverlay = document.getElementById('profileOverlay');
+
+        function openProfile() {
+            userProfilePanel.classList.remove('translate-x-full');
+            profileOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeProfilePanel() {
+            userProfilePanel.classList.add('translate-x-full');
+            profileOverlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        profileToggle.addEventListener('click', openProfile);
+        closeProfile.addEventListener('click', closeProfilePanel);
+        profileOverlay.addEventListener('click', closeProfilePanel);
+    </script>
+
+</body>
+</html>

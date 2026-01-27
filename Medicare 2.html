@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare - Votre Santé, Notre Priorité</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Polices : Playfair Display pour l'élégance (titres) et Inter pour la lisibilité (texte) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981', // Vert émeraude Green Nest
+                            600: '#059669',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            dark: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem', // Arrondis très prononcés comme sur l'image
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Effet de verre dépoli pour le menu */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+        .smooth-shadow {
+            box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-[#FAFAF9] text-slate-800 antialiased font-sans">
+
+    <!-- NAVIGATION (Sticky) -->
+    <nav class="fixed w-full z-50 top-0 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-medical-500 rounded-lg flex items-center justify-center text-white rounded-tr-3xl rounded-bl-3xl group-hover:rotate-12 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <span class="text-2xl font-bold font-serif text-medical-900 tracking-tight">MediCare.</span>
+            </a>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex gap-8 font-medium text-sm text-slate-600">
+                <a href="#accueil" class="hover:text-medical-600 transition">Accueil</a>
+                <a href="#services" class="hover:text-medical-600 transition">Nos Soins</a>
+                <a href="#app" class="hover:text-medical-600 transition">L'Application</a>
+                <a href="#medecins" class="hover:text-medical-600 transition">Praticiens</a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-4 items-center">
+                <button class="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 hover:bg-slate-50 transition relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span class="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full border border-white"></span>
+                </button>
+                <button class="bg-medical-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-medical-800 transition shadow-lg shadow-medical-900/20">
+                    Espace Patient
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="accueil" class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Gauche : Texte -->
+            <div class="space-y-8 animate-fade-in-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-medical-50 border border-medical-100 text-medical-700 text-xs font-semibold tracking-wide uppercase">
+                    <span class="w-2 h-2 rounded-full bg-medical-500 animate-pulse"></span>
+                    Nouveaux créneaux disponibles
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl text-slate-900 font-serif leading-[1.1]">
+                    La médecine <br> 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-600 to-teal-500">humaine</span> & connectée.
+                </h1>
+                
+                <p class="text-lg text-slate-500 max-w-lg leading-relaxed">
+                    Un suivi médical complet, de la prévention aux soins spécialisés. 
+                    Prenez rendez-vous, consultez vos résultats et gérez votre santé depuis notre plateforme sécurisée.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-medical-500 hover:bg-medical-600 text-white px-8 py-4 rounded-full font-medium flex items-center gap-2 transition shadow-xl shadow-medical-500/30 transform hover:-translate-y-0.5">
+                        Prendre rendez-vous
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </button>
+                    <button class="bg-white border border-slate-200 text-slate-700 px-8 py-4 rounded-full font-medium flex items-center gap-2 hover:bg-slate-50 hover:border-slate-300 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        Téléconsultation
+                    </button>
+                </div>
+
+                <!-- Stats Rapides -->
+                <div class="flex items-center gap-8 pt-6 border-t border-slate-100">
+                    <div>
+                        <p class="text-3xl font-serif text-slate-900">12k+</p>
+                        <p class="text-sm text-slate-500">Patients guéris</p>
+                    </div>
+                    <div class="w-px h-10 bg-slate-200"></div>
+                    <div>
+                        <p class="text-3xl font-serif text-slate-900">4.9/5</p>
+                        <p class="text-sm text-slate-500">Note moyenne</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Droite : Image Hero (Style Green Nest) -->
+            <div class="relative">
+                <div class="bg-white p-4 rounded-4xl smooth-shadow border border-white/50 relative z-10">
+                    <div class="relative h-[500px] w-full rounded-[2rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=1000" alt="Médecin bienveillant" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        
+                        <!-- Badge flottant -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="h-10 w-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-slate-800 text-sm">Dr. Amélie Roux</p>
+                                    <p class="text-xs text-slate-500">Disponible dans 15 min</p>
+                                </div>
+                            </div>
+                            <button class="bg-slate-900 text-white h-8 w-8 rounded-full flex items-center justify-center hover:bg-slate-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Élément décoratif arrière -->
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-medical-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 z-0 animate-pulse"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 z-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-24 bg-white rounded-t-[3rem] border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-medical-600 font-semibold text-sm tracking-wider uppercase mb-2 block">Nos Expertises</span>
+                <h2 class="text-4xl font-serif font-bold text-slate-900 mb-4">Des soins adaptés à chaque étape de votre vie</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-[#FAFAF9] p-8 rounded-[2rem] hover:bg-medical-50 transition duration-300 border border-transparent hover:border-medical-100">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-medical-600 mb-6 shadow-sm group-hover:scale-110 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-serif text-slate-900 mb-3">Cardiologie</h3>
+                    <p class="text-slate-500 mb-6 leading-relaxed">Suivi complet de votre santé cardiaque avec des équipements de dernière génération.</p>
+                    <a href="#" class="inline-flex items-center text-medical-700 font-medium hover:text-medical-900">
+                        En savoir plus <span class="ml-2 group-hover:translate-x-1 transition">→</span>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-[#FAFAF9] p-8 rounded-[2rem] hover:bg-medical-50 transition duration-300 border border-transparent hover:border-medical-100">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-medical-600 mb-6 shadow-sm group-hover:scale-110 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-serif text-slate-900 mb-3">Pédiatrie</h3>
+                    <p class="text-slate-500 mb-6 leading-relaxed">Une approche douce et ludique pour le bien-être de vos enfants, dès la naissance.</p>
+                    <a href="#" class="inline-flex items-center text-medical-700 font-medium hover:text-medical-900">
+                        En savoir plus <span class="ml-2 group-hover:translate-x-1 transition">→</span>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-[#FAFAF9] p-8 rounded-[2rem] hover:bg-medical-50 transition duration-300 border border-transparent hover:border-medical-100">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-medical-600 mb-6 shadow-sm group-hover:scale-110 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-serif text-slate-900 mb-3">Téléconsultation</h3>
+                    <p class="text-slate-500 mb-6 leading-relaxed">Consultez un médecin sans vous déplacer. Ordonnances sécurisées envoyées instantanément.</p>
+                    <a href="#" class="inline-flex items-center text-medical-700 font-medium hover:text-medical-900">
+                        En savoir plus <span class="ml-2 group-hover:translate-x-1 transition">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION APP (Inspiré par "Scan a leaf") -->
+    <section id="app" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="bg-medical-900 rounded-[3rem] p-8 md:p-16 text-white overflow-hidden relative shadow-2xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center relative z-10">
+                <div class="space-y-6">
+                    <span class="text-medical-300 font-semibold tracking-wide uppercase">L'Application MediCare</span>
+                    <h2 class="text-4xl md:text-5xl font-serif leading-tight">Votre dossier médical <br>toujours dans votre poche.</h2>
+                    <p class="text-medical-100 text-lg max-w-md leading-relaxed">
+                        Scannez vos ordonnances, suivez vos constantes vitales et recevez des rappels intelligents pour vos traitements.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                        <button class="bg-white text-medical-900 px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-gray-100 transition">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.49l1.83 3.17c.37.64-.1 1.44-.83 1.44h-3.4l-3.2 5.54c-.37.64-1.28.64-1.65 0l-8.3-14.4c-.37-.64.1-1.44.83-1.44h8.34c.73 0 1.2.79.83 1.44L9.8 11.2h3.4l4.4-1.71z"/></svg>
+                            App Store
+                        </button>
+                        <button class="bg-medical-800 border border-medical-700 text-white px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-medical-700 transition">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5h13c.83 0 1.5.67 1.5 1.5v17c0 .83-.67 1.5-1.5 1.5h-13c-.83 0-1.5-.67-1.5-1.5zm6.5-2h3v-1h-3v1zm0-2h3v-1h-3v1zm-5-14v12h13v-12h-13z"/></svg>
+                            Google Play
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visuel iPhone (simulé) -->
+                <div class="relative flex justify-center md:justify-end">
+                    <div class="w-64 h-[500px] bg-white rounded-[3rem] border-8 border-slate-800 shadow-2xl overflow-hidden relative">
+                        <!-- Écran App -->
+                        <div class="h-full w-full bg-[#FAFAF9] flex flex-col p-4">
+                            <div class="flex justify-between items-center mb-6 pt-6">
+                                <span class="text-sm font-bold text-slate-800">Bonjour, Julie</span>
+                                <div class="w-8 h-8 bg-medical-100 rounded-full flex items-center justify-center text-medical-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Widget Scan -->
+                            <div class="bg-medical-500 rounded-2xl p-4 text-white mb-4 shadow-lg shadow-medical-500/30">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-sm font-medium opacity-90">Nouveau scan</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+                                </div>
+                                <h4 class="font-serif text-xl mb-1">Analyser un grain de beauté</h4>
+                                <p class="text-xs opacity-75">IA Dermatologique active</p>
+                            </div>
+
+                            <!-- Listes RDV -->
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 font-bold text-xs">Dr</div>
+                                    <div class="flex-1">
+                                        <p class="text-xs font-bold text-slate-800">Dr. Sophie Martin</p>
+                                        <p class="text-[10px] text-slate-400">Cardiologie • 14:00</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center">
+                                    <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-500 font-bold text-xs">Lab</div>
+                                    <div class="flex-1">
+                                        <p class="text-xs font-bold text-slate-800">BioLab Paris</p>
+                                        <p class="text-[10px] text-slate-400">Prise de sang • Demain</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cercles déco fond -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-medical-800 rounded-full opacity-50 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-emerald-600 rounded-full opacity-30 blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-100 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                        <span class="text-2xl font-bold font-serif text-medical-900">MediCare.</span>
+                    </a>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                        Révolutionner l'accès aux soins grâce à une technologie bienveillante et centrée sur l'humain.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-medical-50 hover:text-medical-600 transition">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-medical-50 hover:text-medical-600 transition">
+                            <span class="sr-only">LinkedIn</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-serif font-bold text-slate-900 mb-6">Patients</h4>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-medical-600 transition">Prendre RDV</a></li>
+                        <li><a href="#" class="hover:text-medical-600 transition">Médecins généralistes</a></li>
+                        <li><a href="#" class="hover:text-medical-600 transition">Spécialistes</a></li>
+                        <li><a href="#" class="hover:text-medical-600 transition">Urgences</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-serif font-bold text-slate-900 mb-6">Praticiens</h4>
+                    <ul class="space-y-3 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-medical-600 transition">Rejoindre MediCare</a></li>
+                        <li><a href="#" class="hover:text-medical-600 transition">Logiciel médical</a></li>
+                        <li><a href="#" class="hover:text-medical-600 transition">Tarifs Pro</a></li>
+                        <li><a href="#" class="hover:text-medical-600 transition">Centre de ressources</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-serif font-bold text-slate-900 mb-6">Restez informé</h4>
+                    <p class="text-sm text-slate-500 mb-4">Recevez nos conseils santé chaque semaine.</p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Votre email" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-medical-500 focus:ring-1 focus:ring-medical-500 text-sm">
+                        <button type="submit" class="bg-medical-500 text-white px-4 py-3 rounded-xl text-sm font-medium hover:bg-medical-600 transition">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
+                <p>&copy; 2023 MediCare Santé. Tous droits réservés.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-slate-600">Confidentialité</a>
+                    <a href="#" class="hover:text-slate-600">Mentions légales</a>
+                    <a href="#" class="hover:text-slate-600">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

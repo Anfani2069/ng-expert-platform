@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Profil | Ng-Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0EA5E9',
+                        'primary-dark': '#0284C7',
+                        secondary: '#1E293B',
+                        'secondary-light': '#334155',
+                        accent: '#06B6D4',
+                        'bg-soft': '#F1F5F9',
+                    },
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'DM Sans', sans-serif; 
+            background-color: #F8FAFC;
+        }
+        .font-heading { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    </style>
+</head>
+<body class="text-secondary">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+            <!-- Logo -->
+            <div class="p-6">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">N</div>
+                    <span class="text-xl font-heading font-bold">Ng-Expert</span>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 space-y-1">
+                <a href="dashboard-recruteur.html" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition">
+                    <i class="fa-solid fa-home w-5"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition">
+                    <i class="fa-solid fa-briefcase w-5"></i>
+                    <span class="font-medium">Mes Offres</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition">
+                    <i class="fa-solid fa-users w-5"></i>
+                    <span class="font-medium">Candidats</span>
+                    <span class="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">12</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition">
+                    <i class="fa-solid fa-envelope w-5"></i>
+                    <span class="font-medium">Messages</span>
+                    <span class="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">5</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition">
+                    <i class="fa-solid fa-search w-5"></i>
+                    <span class="font-medium">Rechercher Experts</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition">
+                    <i class="fa-solid fa-bell w-5"></i>
+                    <span class="font-medium">Notifications</span>
+                </a>
+                <a href="profil-edit-recruteur.html" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-primary rounded-lg transition">
+                    <i class="fa-solid fa-cog w-5"></i>
+                    <span class="font-medium">Paramètres</span>
+                </a>
+            </nav>
+
+            <!-- User Profile -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center gap-3 px-3 py-2">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-gray-100">
+                    <div class="flex-1 min-w-0">
+                        <p class="font-semibold text-sm text-gray-900 truncate">Sophie Martin</p>
+                        <p class="text-xs text-gray-500 truncate">Recruteur</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 px-8 py-4 sticky top-0 z-40">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <button class="lg:hidden text-gray-500 hover:text-gray-700">
+                            <i class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                        <div>
+                            <h1 class="text-2xl font-heading font-bold text-gray-900">Paramètres du Profil</h1>
+                            <p class="text-sm text-gray-500">Gérez vos informations de recruteur</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <button class="p-2 hover:bg-gray-100 rounded-lg transition">
+                            <i class="fa-solid fa-moon text-gray-600"></i>
+                        </button>
+                        <button class="relative p-2 hover:bg-gray-100 rounded-lg transition">
+                            <i class="fa-solid fa-bell text-gray-600"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="flex-1 overflow-y-auto p-8">
+                <div class="max-w-6xl mx-auto space-y-6">
+                    
+                    <!-- Change Profile & Change Password Row -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        
+                        <!-- Change Profile -->
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                            <h2 class="text-lg font-heading font-bold text-gray-900 mb-2">Change Profile</h2>
+                            <p class="text-sm text-gray-500 mb-6">Change your profile picture from here</p>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="relative mb-4">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-32 h-32 rounded-full border-4 border-gray-100">
+                                    <button class="absolute bottom-0 right-0 w-10 h-10 bg-primary text-white rounded-full hover:bg-primary-dark transition shadow-md">
+                                        <i class="fa-solid fa-camera text-sm"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="flex gap-3 mb-4">
+                                    <button class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition font-medium text-sm">
+                                        Upload
+                                    </button>
+                                    <button class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium text-sm">
+                                        Reset
+                                    </button>
+                                </div>
+                                
+                                <p class="text-xs text-gray-500 text-center">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                            </div>
+                        </div>
+
+                        <!-- Change Password -->
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                            <h2 class="text-lg font-heading font-bold text-gray-900 mb-2">Change Password</h2>
+                            <p class="text-sm text-gray-500 mb-6">To change your password please confirm here</p>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Current Password</label>
+                                    <input 
+                                        type="password" 
+                                        value="••••••••••" 
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                    >
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">New Password</label>
+                                    <input 
+                                        type="password" 
+                                        value="••••••••••••" 
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                    >
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+                                    <input 
+                                        type="password" 
+                                        value="••••••••••••" 
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Details -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <h2 class="text-lg font-heading font-bold text-gray-900 mb-2">Personal Details</h2>
+                        <p class="text-sm text-gray-500 mb-6">To change your personal detail, edit and save from here</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
+                                <input 
+                                    type="text" 
+                                    value="Sophie Martin" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                >
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Entreprise</label>
+                                <input 
+                                    type="text" 
+                                    value="TechCorp Solutions" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                >
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Poste</label>
+                                <input 
+                                    type="text" 
+                                    value="Responsable Recrutement Tech" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                >
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Secteur d'activité</label>
+                                <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm">
+                                    <option>Tech / IT</option>
+                                    <option>Finance</option>
+                                    <option>E-commerce</option>
+                                    <option>Santé</option>
+                                    <option>Éducation</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Location</label>
+                                <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm">
+                                    <option>France</option>
+                                    <option>Belgique</option>
+                                    <option>Suisse</option>
+                                    <option>Canada</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Ville</label>
+                                <input 
+                                    type="text" 
+                                    value="Paris" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                >
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                                <input 
+                                    type="email" 
+                                    value="sophie.martin@techcorp.com" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                >
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                                <input 
+                                    type="tel" 
+                                    value="+33 6 12 34 56 78" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                >
+                            </div>
+                            
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Adresse de l'entreprise</label>
+                                <textarea 
+                                    rows="3" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                    placeholder="Enter your company address">15 Avenue des Champs-Élysées, 75008 Paris, France</textarea>
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Description de l'entreprise</label>
+                                <textarea 
+                                    rows="4" 
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                    placeholder="Describe your company">TechCorp Solutions est une entreprise innovante spécialisée dans le développement de solutions web et mobile. Nous recherchons constamment les meilleurs talents Angular pour nos projets ambitieux.</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Préférences de recrutement -->
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Technologies recherchées</label>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-medium flex items-center gap-2">
+                                    Angular
+                                    <button class="hover:text-red-500"><i class="fa-solid fa-times text-xs"></i></button>
+                                </span>
+                                <span class="px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-medium flex items-center gap-2">
+                                    TypeScript
+                                    <button class="hover:text-red-500"><i class="fa-solid fa-times text-xs"></i></button>
+                                </span>
+                                <span class="px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-medium flex items-center gap-2">
+                                    React
+                                    <button class="hover:text-red-500"><i class="fa-solid fa-times text-xs"></i></button>
+                                </span>
+                                <span class="px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-medium flex items-center gap-2">
+                                    Node.js
+                                    <button class="hover:text-red-500"><i class="fa-solid fa-times text-xs"></i></button>
+                                </span>
+                                <button class="px-4 py-2 border-2 border-dashed border-gray-300 text-gray-500 rounded-full text-sm font-medium hover:border-primary hover:text-primary transition">
+                                    <i class="fa-solid fa-plus mr-1"></i> Ajouter
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Types de contrats -->
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Types de contrats proposés</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-primary transition cursor-pointer">
+                                    <input type="checkbox" id="freelance-rec" checked class="w-5 h-5 text-primary rounded focus:ring-2 focus:ring-primary/20">
+                                    <label for="freelance-rec" class="text-sm font-medium text-gray-700 cursor-pointer">Freelance / Mission</label>
+                                </div>
+                                <div class="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-primary transition cursor-pointer">
+                                    <input type="checkbox" id="cdi-rec" checked class="w-5 h-5 text-primary rounded focus:ring-2 focus:ring-primary/20">
+                                    <label for="cdi-rec" class="text-sm font-medium text-gray-700 cursor-pointer">CDI</label>
+                                </div>
+                                <div class="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-primary transition cursor-pointer">
+                                    <input type="checkbox" id="cdd-rec" class="w-5 h-5 text-primary rounded focus:ring-2 focus:ring-primary/20">
+                                    <label for="cdd-rec" class="text-sm font-medium text-gray-700 cursor-pointer">CDD</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certifications Entreprise -->
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <label class="block text-sm font-semibold text-gray-700">Certifications / Agréments</label>
+                                <button class="text-primary text-sm font-medium hover:text-primary-dark transition">
+                                    <i class="fa-solid fa-plus mr-1"></i> Ajouter une certification
+                                </button>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-award text-primary text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 text-sm">Great Place to Work Certified</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Obtenu en 2024</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition">
+                                        <i class="fa-solid fa-trash text-sm"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-award text-primary text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900 text-sm">Label French Tech</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Obtenu en 2023</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-red-500 transition">
+                                        <i class="fa-solid fa-trash text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recrutements Réussis / Expériences Marquantes -->
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <label class="block text-sm font-semibold text-gray-700">Recrutements Réussis</label>
+                                <button class="text-primary text-sm font-medium hover:text-primary-dark transition">
+                                    <i class="fa-solid fa-plus mr-1"></i> Ajouter un recrutement
+                                </button>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-blue-100">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Lead Developer Angular - Projet E-commerce</h4>
+                                            <p class="text-xs text-gray-500 mt-1">Recruté en Décembre 2023</p>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-red-500 transition">
+                                            <i class="fa-solid fa-trash text-sm"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700 mb-3">Recrutement d'un Lead Developer Angular avec 8 ans d'expérience pour diriger notre équipe de développement sur un projet e-commerce ambitieux. Délai de recrutement : 3 semaines.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-white text-primary text-xs font-medium rounded-full">Angular 17</span>
+                                        <span class="px-3 py-1 bg-white text-primary text-xs font-medium rounded-full">Leadership</span>
+                                        <span class="px-3 py-1 bg-white text-primary text-xs font-medium rounded-full">CDI</span>
+                                        <span class="px-3 py-1 bg-white text-green-600 text-xs font-medium rounded-full">✓ Toujours en poste</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-blue-100">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">3 Développeurs Angular Freelance</h4>
+                                            <p class="text-xs text-gray-500 mt-1">Recrutés en Septembre 2023</p>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-red-500 transition">
+                                            <i class="fa-solid fa-trash text-sm"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-gray-700 mb-3">Recrutement de 3 développeurs Angular freelance pour renforcer l'équipe sur une mission de 6 mois. Tous ont terminé avec succès et ont été recommandés.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-white text-primary text-xs font-medium rounded-full">Angular</span>
+                                        <span class="px-3 py-1 bg-white text-primary text-xs font-medium rounded-full">TypeScript</span>
+                                        <span class="px-3 py-1 bg-white text-primary text-xs font-medium rounded-full">Freelance</span>
+                                        <span class="px-3 py-1 bg-white text-green-600 text-xs font-medium rounded-full">✓ Mission terminée</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Budget et Disponibilité -->
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Informations de Recrutement</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Budget moyen par recrutement</label>
+                                    <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm">
+                                        <option>40-60k€ (CDI)</option>
+                                        <option>60-80k€ (CDI)</option>
+                                        <option>80-100k€ (CDI)</option>
+                                        <option>500-700€/j (Freelance)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nombre de postes à pourvoir</label>
+                                    <input 
+                                        type="number" 
+                                        value="5" 
+                                        min="1"
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                                    >
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Urgence de recrutement</label>
+                                    <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm">
+                                        <option>Immédiate (moins d'1 mois)</option>
+                                        <option>Court terme (1-3 mois)</option>
+                                        <option>Moyen terme (3-6 mois)</option>
+                                        <option>Long terme (6+ mois)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Localisation des postes</label>
+                                    <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm">
+                                        <option>Paris uniquement</option>
+                                        <option>France entière</option>
+                                        <option>Remote France</option>
+                                        <option>Remote International</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications preferences -->
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Préférences de notification</label>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Nouvelles candidatures</p>
+                                        <p class="text-xs text-gray-500">Recevoir un email pour chaque nouvelle candidature</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Nouveaux experts disponibles</p>
+                                        <p class="text-xs text-gray-500">Être notifié quand de nouveaux experts s'inscrivent</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Rappels d'entretiens</p>
+                                        <p class="text-xs text-gray-500">Recevoir des rappels pour les entretiens planifiés</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="mt-8 flex items-center justify-end gap-3">
+                            <button class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium">
+                                Annuler
+                            </button>
+                            <button class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition font-medium shadow-sm">
+                                <i class="fa-solid fa-save mr-2"></i>
+                                Enregistrer les modifications
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

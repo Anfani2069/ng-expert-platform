@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ng-Expert | Recrutement d'Experts Angular</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0EA5E9',
+                        'primary-dark': '#0284C7',
+                        secondary: '#1E293B',
+                        'secondary-light': '#334155',
+                        accent: '#06B6D4',
+                        'bg-soft': '#F1F5F9',
+                    },
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px rgba(0, 0, 0, 0.04)',
+                        'medium': '0 4px 16px rgba(0, 0, 0, 0.08)',
+                        'large': '0 12px 40px rgba(0, 0, 0, 0.12)',
+                        'glow': '0 0 40px rgba(14, 165, 233, 0.2)',
+                        'inner': 'inset 0 2px 4px rgba(0, 0, 0, 0.06)'
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'DM Sans', sans-serif; 
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #F8FAFC;
+        }
+        .font-heading { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out; }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-scaleIn { animation: scaleIn 0.5s ease-out; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FAFBFC 0%, #F0F4F8 100%);
+        }
+        
+        .gradient-card {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(-45deg, #F8FAFC, #E0F2FE, #DBEAFE, #F8FAFC);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+        }
+        
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(20px, -20px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        .animate-float-slow { animation: floatSlow 20s ease-in-out infinite; }
+        .animate-pulse-slow { animation: pulse 4s ease-in-out infinite; }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .animate-scroll { animation: scroll 30s linear infinite; }
+    </style>
+</head>
+<body class="text-secondary overflow-x-hidden">
+
+    <nav id="navbar" class="z-50 transition-all duration-300" style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #E0F2FE 100%);">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">A</div>
+            <span class="text-xl font-heading font-bold">Ng-Expert</span>
+        </div>
+
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+            <a href="#" class="text-secondary font-bold">Home</a>
+            <a href="#experts" class="hover:text-primary transition">Annuaires</a>
+            <a href="#About" class="hover:text-primary transition">About us</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button class="flex items-center gap-2 border border-primary rounded-full px-5 py-2 text-sm font-bold text-white hover:bg-white hover:text-primary transition bg-primary">
+                Apply as an Expert
+            </button>
+            <button class="flex items-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-sm font-bold hover:border-primary hover:text-primary transition bg-white">
+                Hire an Expert 
+                <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </button>
+        </div>
+        </div>
+    </nav>
+
+    <section class="pt-16 pb-24 relative overflow-hidden" style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #E0F2FE 100%);">
+        <!-- Large decorative blobs -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-primary/20 to-cyan-400/20 rounded-full blur-3xl opacity-60 animate-float-slow"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-300/20 to-primary/20 rounded-full blur-3xl opacity-50 animate-float-slow" style="animation-delay: 3s;"></div>
+        
+        <!-- Small decorative circles -->
+        <div class="absolute top-20 left-[15%] w-16 h-16 bg-white/40 rounded-full backdrop-blur-sm animate-float" style="animation-delay: 1s;"></div>
+        <div class="absolute top-40 right-[20%] w-12 h-12 bg-primary/10 rounded-full animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-32 left-[25%] w-20 h-20 bg-cyan-400/10 rounded-full animate-float-slow"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+                <div class="space-y-8">
+                    <h1 class="text-5xl md:text-6xl font-heading font-bold leading-tight" style="color: #1E293B;">
+                        Trouvez les meilleurs<br>
+                        développeurs <span class="text-primary">Angular</span>
+                    </h1>
+
+                    <p class="text-xl leading-relaxed max-w-lg" style="color: #64748B;">
+                        Recrutez des experts Angular qualifiés pour vos projets. Simple, rapide et efficace.
+                    </p>
+
+                    <div class="flex items-center gap-8 pt-4">
+                        <div class="flex items-center gap-3">
+                            <div class="flex -space-x-3">
+                                <img src="https://randomuser.me/api/portraits/men/1.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" alt="">
+                                <img src="https://randomuser.me/api/portraits/women/2.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" alt="">
+                                <img src="https://randomuser.me/api/portraits/men/3.jpg" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" alt="">
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">1000+ experts</p>
+                                <p class="text-xs text-gray-500">disponibles</p>
+                            </div>
+                        </div>
+                        <div class="h-10 w-px bg-gray-200"></div>
+                        <div>
+                            <div class="flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                <span class="text-sm font-semibold text-gray-900">4.9/5</span>
+                            </div>
+                            <p class="text-xs text-gray-500">2,500 avis</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="flex-1">
+                            <input 
+                                type="text" 
+                                placeholder="Rechercher des compétences..." 
+                                class="w-full px-6 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-base shadow-sm"
+                            >
+                        </div>
+                        <button class="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-sm hover:shadow-md whitespace-nowrap">
+                            Rechercher
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative hidden lg:block">
+                    <!-- Floating profile card -->
+                    <div class="relative animate-float">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse-slow"></div>
+                        <img src="image-transparent.png" alt="Developer" class="w-full max-w-lg mx-auto relative z-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-white py-16 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-8">
+                <p class="text-sm font-semibold text-gray-500 mb-2">Plus de 650 000 clients et 350 000 freelances utilisent Ng-Expert pour leur projet depuis 2006</p>
+            </div>
+            
+            <div class="relative">
+                <div class="flex animate-scroll">
+                    <!-- Premier set de logos -->
+                    <div class="flex items-center gap-12 px-6 flex-shrink-0">
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-google text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Google</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-microsoft text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Microsoft</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-airbnb text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Airbnb</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-spotify text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Spotify</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-apple text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Apple</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-amazon text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Amazon</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-meta text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Meta</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-netflix text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Netflix</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplication pour l'effet infini -->
+                    <div class="flex items-center gap-12 px-6 flex-shrink-0">
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-google text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Google</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-microsoft text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Microsoft</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-airbnb text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Airbnb</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-spotify text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Spotify</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-apple text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Apple</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-amazon text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Amazon</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-meta text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Meta</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 hover:text-gray-600 transition">
+                            <i class="fa-brands fa-netflix text-3xl"></i>
+                            <span class="text-xl font-bold font-heading">Netflix</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="experts" class="container mx-auto px-6 py-20">
+        <div class="mb-12">
+            <h2 class="text-4xl font-heading font-bold mb-8">Nos Experts Angular</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">VILLE</label>
+                    <input 
+                        type="text" 
+                        placeholder="Paris, Lyon..." 
+                        class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                    >
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">TECHNOLOGIE</label>
+                    <input 
+                        type="text" 
+                        placeholder="Vue.js, Python..." 
+                        class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm"
+                    >
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">DISPONIBLE POUR</label>
+                    <select class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition text-sm">
+                        <option>Tous</option>
+                        <option>Freelance</option>
+                        <option>CDI</option>
+                        <option>Mentoring</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-8">
+                <button class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm hover:border-primary hover:text-primary transition">Conférence</button>
+                <button class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm hover:border-primary hover:text-primary transition">Mentoring</button>
+                <button class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm hover:border-primary hover:text-primary transition">Freelance</button>
+                <button class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm hover:border-primary hover:text-primary transition">CDI</button>
+                <button class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm hover:border-primary hover:text-primary transition">Coffee chat</button>
+                <button class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm hover:border-primary hover:text-primary transition">Pair programming</button>
+                <button class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm hover:border-primary hover:text-primary transition">Relecture CV</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto px-4 md:px-0">
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg mb-1">Camille Coutens</h3>
+                        <p class="text-sm text-gray-500">Bordeaux</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                    Développeuse Vue.js / Nuxt + CTO @augalo @augocel @aucode @auciono Kiffer avant tout.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Vue.js</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Nuxt</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Ionic</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
+                    <span>Coffee chat</span>
+                    <span>•</span>
+                    <span>Mentoring</span>
+                    <span>•</span>
+                    <span>Freelance</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg mb-1">Ramarovahoaka</h3>
+                        <p class="text-sm text-gray-500">Bordeaux</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                    Bonjour, je m'appelle Dina, 40 ans, développeuse frontend passionnée ! J'habite à bordeaux et je su...
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Angular</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">React</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
+                    <span>Freelance</span>
+                    <span>•</span>
+                    <span>CDI</span>
+                    <span>•</span>
+                    <span>Pair programming</span>
+                    <span>•</span>
+                    <span>Coffee chat</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://randomuser.me/api/portraits/women/46.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg mb-1">Natacha</h3>
+                        <p class="text-sm text-gray-500">Lille</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                    Hello, Moi c'est Natacha, je suis développeuse Fullstack sur des stacks JS / TS, principalement...
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Angular</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Next.JS</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Mongo DB</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Figma</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
+                    <span>Mentoring</span>
+                    <span>•</span>
+                    <span>Freelance</span>
+                    <span>•</span>
+                    <span>Coffee chat</span>
+                    <span>•</span>
+                    <span>Pair programming</span>
+                    <span>•</span>
+                    <span>Relecture CV</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://randomuser.me/api/portraits/women/47.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg mb-1">Meunier Brenda</h3>
+                        <p class="text-sm text-gray-500">Mende</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                    Développeuse full-stack spécialisée en Angular (v2 -> v20) et Python (Django, FastAPI). J'interviens s...
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Angular</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">TypeScript</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">RxJS</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">+9</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
+                    <span>Freelance</span>
+                    <span>•</span>
+                    <span>Mentoring</span>
+                    <span>•</span>
+                    <span>CDI</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://randomuser.me/api/portraits/men/48.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="flex-1 flex items-start justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">Manon Carbonnel</h3>
+                            <p class="text-sm text-gray-500">Nantes</p>
+                        </div>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">SPEAKEUSE</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                    Développeuse web | Software crafter | Agiliste | Yesss Leader | Fresqueuse | Experte en intégration...
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">TypeScript</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">CSS</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">PHP</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Python</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
+                    <span>Conférence</span>
+                    <span>•</span>
+                    <span>Mentoring</span>
+                    <span>•</span>
+                    <span>Coffee chat</span>
+                    <span>•</span>
+                    <span>Pair programming</span>
+                    <span>•</span>
+                    <span>Relecture CV</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://randomuser.me/api/portraits/women/49.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="flex-1 flex items-start justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">Emmanuelle ABOAF</h3>
+                            <p class="text-sm text-gray-500">Paris</p>
+                        </div>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">SPEAKEUSE</span>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                    Sourde de naissance et bilingue avec deux implants cochléaires, je suis développeuse, coach...
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Angular</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">React</span>
+                    <span class="px-3 py-1 bg-cyan-50 text-primary text-xs rounded-full font-medium">Vue.JS</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">+2</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
+                    <span>Conférence</span>
+                    <span>•</span>
+                    <span>Pair programming</span>
+                    <span>•</span>
+                    <span>Freelance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #E0F2FE 100%);">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block mb-4">
+                    <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">Rejoignez la communauté</span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6" style="color: #1E293B;">
+                    Vous êtes développeur Angular ?<br>
+                    <span class="text-primary">Ajoutez votre profil !</span>
+                </h2>
+                
+                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Rejoignez notre réseau d'experts Angular et recevez des opportunités de missions adaptées à vos compétences.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <button class="bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Créer mon profil
+                    </button>
+                    <button class="border-2 border-gray-300 hover:border-primary text-gray-700 hover:text-primary font-semibold px-8 py-4 rounded-xl transition-all bg-white">
+                        En savoir plus
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-eye text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Visibilité accrue</h3>
+                        <p class="text-sm text-gray-600">Soyez visible auprès de milliers de recruteurs</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-briefcase text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Missions qualifiées</h3>
+                        <p class="text-sm text-gray-600">Recevez des offres adaptées à votre profil</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-shield-halved text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">100% gratuit</h3>
+                        <p class="text-sm text-gray-600">Aucun frais, aucun engagement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl"></div>
+    </section>
+
+    <footer id="contact" class="bg-secondary text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-heading font-bold mb-4">
+                        Reach your Recruitment Goals<br>
+                        Right on Schedule.
+                    </h3>
+                    <p class="text-gray-400 text-sm mb-6">
+                        Onboard your own talent pool to Quiety, invite them to projects, kick off the projects.
+                    </p>
+                    <button class="flex items-center gap-2 border border-white/30 rounded-full px-5 py-2 text-sm font-bold hover:bg-white/10 transition">
+                        Get Started 
+                        <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Features</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Interview Scheduling</a></li>
+                        <li><a href="#" class="hover:text-white transition">Candidate Experience</a></li>
+                        <li><a href="#" class="hover:text-white transition">Interviewer Training</a></li>
+                        <li><a href="#" class="hover:text-white transition">Scheduling Queues</a></li>
+                        <li><a href="#" class="hover:text-white transition">Reporting & Dashboards</a></li>
+                        <li><a href="#" class="hover:text-white transition">Integrations</a></li>
+                        <li><a href="#" class="hover:text-white transition">Security</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">About us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contacts</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Customer Stories</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Marketplace & Network</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Upgrade your career</a></li>
+                        <li><a href="#" class="hover:text-white transition">Grow your network</a></li>
+                        <li><a href="#" class="hover:text-white transition">Build a team</a></li>
+                        <li><a href="#" class="hover:text-white transition">Quiety Community</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold">N</div>
+                        <span class="text-xl font-heading font-bold">Ng-Expert</span>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-opacity-80 transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fa-brands fa-pinterest"></i>
+                        </a>
+                    </div>
+
+                    <p class="text-sm text-gray-400">Copyright @2023 All Rights Reserved by ThemeTags</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'shadow-sm');
+            } else {
+                navbar.classList.remove('fixed', 'top-0', 'left-0', 'right-0', 'shadow-sm');
+            }
+        });
+    </script>
+
+</body>
+</html>

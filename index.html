@@ -142,15 +142,15 @@
 
     <nav id="navbar" class="z-50 transition-all duration-300" style="background: linear-gradient(135deg, #FEFCFD 0%, #FEF9FB 50%, #FEF9FC 100%);">
         <div class="container mx-auto px-6 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-lg" style="background: linear-gradient(135deg, #E91E63 0%, #9C27B0 100%);">A</div>
+        <a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <img src="logo 1.png" alt="Ng-Expert Logo" class="w-12 h-12 rounded-full object-cover">
             <span class="text-xl font-heading font-bold">Ng-Expert</span>
-        </div>
+        </a>
 
         <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
-            <a href="#" class="text-secondary font-bold">Home</a>
-            <a href="#experts" class="hover:text-primary transition">Annuaires</a>
-            <a href="#About" class="hover:text-primary transition">About us</a>
+            <a href="#" class="hover:text-primary font-bold">Home</a>
+            <a href="#experts" class="hover:text-primary transition font-bold">Annuaires</a>
+            <a href="#About" class="hover:text-primary transition font-bold">About us</a>
         </div>
 
         <div class="flex items-center gap-3">
@@ -365,169 +365,406 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto px-4 md:px-0">
-            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+            <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 group overflow-hidden">
+                <!-- Badge Verified Expert -->
+                <div class="absolute top-4 right-4 text-green-600 text-xs font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-award"></i>
+                    Verified Expert
+                </div>
+                
+                <!-- Decorative gradient overlay -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+                
                 <div class="flex items-start gap-4 mb-4">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 rounded-xl border-2 border-white shadow-lg">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        </div>
+                    </div>
                     <div class="flex-1">
-                        <h3 class="font-bold text-lg mb-1">Camille Coutens</h3>
-                        <p class="text-sm text-gray-500">Bordeaux</p>
+                        <h3 class="font-bold text-lg mb-1 text-gray-900 group-hover:text-primary transition-colors">Camille Coutens</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-location-dot text-gray-400 text-sm"></i>
+                            <p class="text-sm text-gray-600 font-medium">Bordeaux</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                            </div>
+                            <span class="text-sm text-gray-600 font-semibold">5.0</span>
+                            <span class="text-xs text-gray-400">(24 avis)</span>
+                        </div>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                
+                <p class="text-gray-700 mb-4 leading-relaxed text-sm">
                     Développeuse Vue.js / Nuxt + CTO @augalo @augocel @aucode @auciono Kiffer avant tout.
                 </p>
+                
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Vue.js</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Nuxt</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Ionic</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Vue.js</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Nuxt</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Ionic</span>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span>Coffee chat</span>
-                    <span>•</span>
-                    <span>Mentoring</span>
-                    <span>•</span>
-                    <span>Freelance</span>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex flex-wrap gap-3 text-sm text-gray-600">
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-laptop-code text-primary"></i>
+                            Freelance
+                        </span>
+                    </div>
+                    <button class="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-sm font-bold hover:border-primary hover:text-primary transition bg-white min-w-[7rem] flex-shrink-0">
+                        Hire Me
+                        <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+            <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 group overflow-hidden">
+                <!-- Badge Verified Expert -->
+                <div class="absolute top-4 right-4 text-green-600 text-xs font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-award"></i>
+                    Verified Expert
+                </div>
+                
+                <!-- Decorative gradient overlay -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+                
                 <div class="flex items-start gap-4 mb-4">
-                    <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-16 h-16 rounded-xl border-2 border-white shadow-lg">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        </div>
+                    </div>
                     <div class="flex-1">
-                        <h3 class="font-bold text-lg mb-1">Ramarovahoaka</h3>
-                        <p class="text-sm text-gray-500">Bordeaux</p>
+                        <h3 class="font-bold text-lg mb-1 text-gray-900 group-hover:text-primary transition-colors">Dina Ramarovahoaka</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-location-dot text-gray-400 text-sm"></i>
+                            <p class="text-sm text-gray-600 font-medium">Bordeaux</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                            </div>
+                            <span class="text-sm text-gray-600 font-semibold">4.9</span>
+                            <span class="text-xs text-gray-400">(18 avis)</span>
+                        </div>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
-                    Bonjour, je m'appelle Dina, 40 ans, développeuse frontend passionnée ! J'habite à bordeaux et je su...
+                
+                <p class="text-gray-700 mb-4 leading-relaxed text-sm">
+                    Bonjour, je m'appelle Dina, 40 ans, développeuse frontend passionnée ! J'habite à bordeaux et je suis spécialisée en Angular.
                 </p>
+                
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Angular</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">React</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Angular</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">React</span>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span>Freelance</span>
-                    <span>•</span>
-                    <span>CDI</span>
-                    <span>•</span>
-                    <span>Pair programming</span>
-                    <span>•</span>
-                    <span>Coffee chat</span>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex flex-wrap gap-3 text-sm text-gray-600">
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-laptop-code text-primary"></i>
+                            Freelance
+                        </span>
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-briefcase text-primary"></i>
+                            CDI
+                        </span>
+                    </div>
+                    <button class="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-sm font-bold hover:border-primary hover:text-primary transition bg-white min-w-[7rem] flex-shrink-0">
+                        Hire Me
+                        <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+            <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 group overflow-hidden">
+                <!-- Badge Verified Expert -->
+                <div class="absolute top-4 right-4 text-green-600 text-xs font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-award"></i>
+                    Verified Expert
+                </div>
+                
+                <!-- Decorative gradient overlay -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+                
                 <div class="flex items-start gap-4 mb-4">
-                    <img src="https://randomuser.me/api/portraits/women/46.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/46.jpg" class="w-16 h-16 rounded-xl border-2 border-white shadow-lg">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        </div>
+                    </div>
                     <div class="flex-1">
-                        <h3 class="font-bold text-lg mb-1">Natacha</h3>
-                        <p class="text-sm text-gray-500">Lille</p>
+                        <h3 class="font-bold text-lg mb-1 text-gray-900 group-hover:text-primary transition-colors">Natacha</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-location-dot text-gray-400 text-sm"></i>
+                            <p class="text-sm text-gray-600 font-medium">Lille</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                            </div>
+                            <span class="text-sm text-gray-600 font-semibold">4.8</span>
+                            <span class="text-xs text-gray-400">(31 avis)</span>
+                        </div>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
-                    Hello, Moi c'est Natacha, je suis développeuse Fullstack sur des stacks JS / TS, principalement...
+                
+                <p class="text-gray-700 mb-4 leading-relaxed text-sm">
+                    Hello, Moi c'est Natacha, je suis développeuse Fullstack sur des stacks JS / TS, principalement Angular et Node.js.
                 </p>
+                
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Angular</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Next.JS</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Mongo DB</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Figma</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Angular</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Next.JS</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">MongoDB</span>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span>Mentoring</span>
-                    <span>•</span>
-                    <span>Freelance</span>
-                    <span>•</span>
-                    <span>Coffee chat</span>
-                    <span>•</span>
-                    <span>Pair programming</span>
-                    <span>•</span>
-                    <span>Relecture CV</span>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex flex-wrap gap-3 text-sm text-gray-600">
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-laptop-code text-primary"></i>
+                            Freelance
+                        </span>
+                    </div>
+                    <button class="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-sm font-bold hover:border-primary hover:text-primary transition bg-white min-w-[7rem] flex-shrink-0">
+                        Hire Me
+                        <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+            <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 group overflow-hidden">
+                <!-- Badge Verified Expert -->
+                <div class="absolute top-4 right-4 text-green-600 text-xs font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-award"></i>
+                    Verified Expert
+                </div>
+                
+                <!-- Decorative gradient overlay -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+                
                 <div class="flex items-start gap-4 mb-4">
-                    <img src="https://randomuser.me/api/portraits/women/47.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/47.jpg" class="w-16 h-16 rounded-xl border-2 border-white shadow-lg">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        </div>
+                    </div>
                     <div class="flex-1">
-                        <h3 class="font-bold text-lg mb-1">Meunier Brenda</h3>
-                        <p class="text-sm text-gray-500">Mende</p>
+                        <h3 class="font-bold text-lg mb-1 text-gray-900 group-hover:text-primary transition-colors">Brenda Meunier</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-location-dot text-gray-400 text-sm"></i>
+                            <p class="text-sm text-gray-600 font-medium">Mende</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                            </div>
+                            <span class="text-sm text-gray-600 font-semibold">4.7</span>
+                            <span class="text-xs text-gray-400">(42 avis)</span>
+                        </div>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
-                    Développeuse full-stack spécialisée en Angular (v2 -> v20) et Python (Django, FastAPI). J'interviens s...
+                
+                <p class="text-gray-700 mb-4 leading-relaxed text-sm">
+                    Développeuse full-stack spécialisée en Angular (v2 -> v20) et Python (Django, FastAPI). J'interviens sur des projets complexes.
                 </p>
+                
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Angular</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">TypeScript</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">RxJS</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Angular</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">TypeScript</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">RxJS</span>
                     <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">+9</span>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span>Freelance</span>
-                    <span>•</span>
-                    <span>Mentoring</span>
-                    <span>•</span>
-                    <span>CDI</span>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex flex-wrap gap-3 text-sm text-gray-600">
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-laptop-code text-primary"></i>
+                            Freelance
+                        </span>
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-briefcase text-primary"></i>
+                            CDI
+                        </span>
+                    </div>
+                    <button class="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-sm font-bold hover:border-primary hover:text-primary transition bg-white min-w-[7rem] flex-shrink-0">
+                        Hire Me
+                        <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+            <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 group overflow-hidden">
+                <!-- Badge Verified Expert -->
+                <div class="absolute top-4 right-4 text-green-600 text-xs font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-award"></i>
+                    Verified Expert
+                </div>
+                
+                <!-- Badge Speakeuse -->
+                <div class="absolute top-16 right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    SPEAKEUSE
+                </div>
+                
+                <!-- Decorative gradient overlay -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+                
                 <div class="flex items-start gap-4 mb-4">
-                    <img src="https://randomuser.me/api/portraits/men/48.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
-                    <div class="flex-1 flex items-start justify-between">
-                        <div>
-                            <h3 class="font-bold text-lg mb-1">Manon Carbonnel</h3>
-                            <p class="text-sm text-gray-500">Nantes</p>
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/men/48.jpg" class="w-16 h-16 rounded-xl border-2 border-white shadow-lg">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
                         </div>
-                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">SPEAKEUSE</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg mb-1 text-gray-900 group-hover:text-primary transition-colors">Manon Carbonnel</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-location-dot text-gray-400 text-sm"></i>
+                            <p class="text-sm text-gray-600 font-medium">Nantes</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                            </div>
+                            <span class="text-sm text-gray-600 font-semibold">4.9</span>
+                            <span class="text-xs text-gray-400">(67 avis)</span>
+                        </div>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
-                    Développeuse web | Software crafter | Agiliste | Yesss Leader | Fresqueuse | Experte en intégration...
+                
+                <p class="text-gray-700 mb-4 leading-relaxed text-sm">
+                    Développeuse web | Software crafter | Agiliste | Yesss Leader | Fresqueuse | Experte en intégration continue.
                 </p>
+                
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">TypeScript</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">CSS</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">PHP</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Python</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">TypeScript</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">CSS</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">PHP</span>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span>Conférence</span>
-                    <span>•</span>
-                    <span>Mentoring</span>
-                    <span>•</span>
-                    <span>Coffee chat</span>
-                    <span>•</span>
-                    <span>Pair programming</span>
-                    <span>•</span>
-                    <span>Relecture CV</span>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex flex-wrap gap-3 text-sm text-gray-600">
+                         <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-laptop-code text-primary"></i>
+                            Freelance
+                        </span>
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-briefcase text-primary"></i>
+                            CDI
+                        </span>
+                    </div>
+                    <button class="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-sm font-bold hover:border-primary hover:text-primary transition bg-white min-w-[7rem] flex-shrink-0">
+                        Hire Me
+                        <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+            <div class="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 group overflow-hidden">
+                <!-- Badge Verified Expert -->
+                <div class="absolute top-4 right-4 text-green-600 text-xs font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-award"></i>
+                    Verified Expert
+                </div>
+                
+                <!-- Badge Speakeuse -->
+                <div class="absolute top-16 right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    SPEAKEUSE
+                </div>
+                
+                <!-- Decorative gradient overlay -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+                
                 <div class="flex items-start gap-4 mb-4">
-                    <img src="https://randomuser.me/api/portraits/women/49.jpg" class="w-16 h-16 rounded-full border-2 border-gray-100">
-                    <div class="flex-1 flex items-start justify-between">
-                        <div>
-                            <h3 class="font-bold text-lg mb-1">Emmanuelle ABOAF</h3>
-                            <p class="text-sm text-gray-500">Paris</p>
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/49.jpg" class="w-16 h-16 rounded-xl border-2 border-white shadow-lg">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
                         </div>
-                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">SPEAKEUSE</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg mb-1 text-gray-900 group-hover:text-primary transition-colors">Emmanuelle ABOAF</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-location-dot text-gray-400 text-sm"></i>
+                            <p class="text-sm text-gray-600 font-medium">Paris</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                                <i class="fa-solid fa-star text-xs"></i>
+                            </div>
+                            <span class="text-sm text-gray-600 font-semibold">5.0</span>
+                            <span class="text-xs text-gray-400">(89 avis)</span>
+                        </div>
                     </div>
                 </div>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3">
-                    Sourde de naissance et bilingue avec deux implants cochléaires, je suis développeuse, coach...
+                
+                <p class="text-gray-700 mb-4 leading-relaxed text-sm">
+                    Sourde de naissance et bilingue avec deux implants cochléaires, je suis développeuse, coach et conférencière passionnée.
                 </p>
+                
                 <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Angular</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">React</span>
-                    <span class="px-3 py-1 bg-pink-50 text-primary text-xs rounded-full font-medium">Vue.JS</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Angular</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">React</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs rounded-lg font-semibold border border-primary/20">Vue.JS</span>
                     <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">+2</span>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span>Conférence</span>
-                    <span>•</span>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex flex-wrap gap-3 text-sm text-gray-600">
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-briefcase text-primary"></i>
+                            CDI
+                        </span>
+                    </div>
+                    <button class="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1.5 text-sm font-bold hover:border-primary hover:text-primary transition bg-white min-w-[7rem] flex-shrink-0">
+                        Hire Me
+                        <span class="w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center text-xs transform -rotate-45">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div> <!-- Added closing div here -->
 </section>
